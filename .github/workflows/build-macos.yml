@@ -1,0 +1,35 @@
+name: Build and Package macOS App
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+
+      - name: Build and Package for macOS
+        run: npm run package-mac
+
+      - name: Upload macOS DMG
+        uses: actions/upload-artifact@v2
+        with:
+          name: macOS-app
+          path: |
+            dist/*.dmg
+            dist/*.zip
