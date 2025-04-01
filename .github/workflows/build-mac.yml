@@ -27,7 +27,7 @@ jobs:
         run: npm run package-mac
 
       - name: Upload macOS DMG
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: macOS-app
           path: |
