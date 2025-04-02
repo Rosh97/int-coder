@@ -26,5 +26,17 @@ jobs:
       - name: Build and Package for macOS
         run: npm run package-mac
 
-      - name: Skipping upload due to private repo bug
-        run: echo "Build done. No upload."
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.0.0
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload .dmg and .zip files to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
