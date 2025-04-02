@@ -33,12 +33,14 @@
       "target": [
         {
           "target": "dmg",
-          "size": null,
           "arch": [
             "x64"
           ]
         }
       ],
+      "dmg": {
+        "size": null
+        },
       "artifactName": "Interview-Coder-${arch}.${ext}",
       "icon": "assets/icons/mac/icon.icns",
       "hardenedRuntime": true,
