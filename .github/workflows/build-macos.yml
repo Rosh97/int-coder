@@ -24,6 +24,8 @@ jobs:
           yarn install
 
       - name: Build and Package for macOS
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run package-mac
 
       - name: Create GitHub Release
