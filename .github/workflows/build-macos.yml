@@ -32,20 +32,21 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git tag v1.0.0
-          git push origin v1.0.0  
+          git tag v1.0.${{ github.run_number }}
+          git push origin v1.0.${{ github.run_number }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v1.0.0
+          tag_name: v1.0.${{ github.run_number }}
           draft: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Upload .dmg and .zip files to Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: v1.0.${{ github.run_number }}
           files: release/*
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
