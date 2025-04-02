@@ -26,10 +26,5 @@ jobs:
       - name: Build and Package for macOS
         run: npm run package-mac
 
-      - name: Upload macOS DMG
-        uses: actions/upload-artifact@v2
-        with:
-          name: macOS-app
-          path: |
-            dist/*.dmg
-            dist/*.zip
+      - name: Skipping upload due to private repo bug
+        run: echo "Build done. No upload."
