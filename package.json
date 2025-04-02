@@ -39,8 +39,25 @@
         }
       ],
       "dmg": {
-        "size": null
+        "background": null,
+        "format": "ULFO",
+        "window": {
+          "width": 600,
+          "height": 400
         },
+        "contents": [
+          {
+            "x": 130,
+            "y": 220
+          },
+          {
+            "x": 410,
+            "y": 220,
+            "type": "link",
+            "path": "/Applications"
+          }
+        ]
+      },
       "artifactName": "Interview-Coder-${arch}.${ext}",
       "icon": "assets/icons/mac/icon.icns",
       "hardenedRuntime": true,
