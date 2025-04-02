@@ -28,6 +28,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run package-mac
 
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag v1.0.0
+          git push origin v1.0.0  
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
